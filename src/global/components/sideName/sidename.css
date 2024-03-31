@@ -1,0 +1,23 @@
+.side-name-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    color: #007FFF; /* Electric Blue */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Black shadow for depth */    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0px;
+    right: 25px;
+    font-family: 'Roboto', sans-serif;
+
+}
+#i-name{
+    position: relative;
+    left: 8px;
+}

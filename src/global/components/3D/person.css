@@ -1,0 +1,12 @@
+.person{
+    position:absolute;
+        width: 60%;
+        margin: auto; /* Center the div if needed */
+        height: 100vh; /* Example height - adjust as necessary */
+        left: 40%;
+    top: 0px;
+}
+canvas{
+    height: 250px;
+    background-color: transparent;
+}

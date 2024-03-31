@@ -1,0 +1,14 @@
+.landing-container{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+.slider-container{
+    position: relative;
+}
+.planet{
+    cursor: grab;
+}
+.planet:active{
+    cursor: grabbing;
+}

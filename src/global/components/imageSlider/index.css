@@ -1,0 +1,40 @@
+/* ImageSlider.css */
+.image-slider {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide-image {
+  position: absolute;
+  top: 25vh;
+  transition: left 2s ease;
+  /* Ensure images maintain their original size */
+  max-width: none; /* Resets any previous max-width settings */
+  height: 350px;
+  width: 275px;
+  border: 5px solid rgb(220, 221, 212);
+  border-bottom: 75px solid rgb(220, 221, 212);
+  outline: 1px solid rgb(94, 94, 94);
+}
+
+#slide-image_1{
+  transform: rotateX(5deg) rotateY(5deg) rotateZ(5deg);
+}
+#slide-image_2{
+  transform: rotateX(-5deg) rotateY(-5deg) rotateZ(-5deg);
+}
+#slide-image_3{
+  transform: rotateX(5deg) rotateY(5deg) rotateZ(5deg);
+}
+#slide-image_4{
+  transform: rotateX(-5deg) rotateY(-5deg) rotateZ(-5deg);
+}
+.Text{
+  color: red;
+}
+.photo-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}

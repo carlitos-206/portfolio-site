@@ -1,23 +1,16 @@
-import logo from './logo.svg';
+import React from "react";
+import LandingPage from "./components/_landing-page";
+import Stars from "./global/components/stars/index.jsx";
+import NavBar from "./global/components/nav-bar/index.jsx";
 import './App.css';
-
 function App() {
+  let screenInfo = {width: window.innerWidth, height: window.innerHeight}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Stars screenInfo={screenInfo}/>
+      <LandingPage />
+      <NavBar />
     </div>
   );
 }

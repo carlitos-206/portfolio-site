@@ -1,0 +1,15 @@
+.navbar-container{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #f8f9fa9d;
+    color: #007FFF; /* Electric Blue */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.352); /* Black shadow for depth */    
+    font-size: 1rem;
+
+}
+.nav-item:hover{
+    cursor: pointer;
+}
