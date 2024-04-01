@@ -1,4 +1,6 @@
 .App {
   /* Simulate the night sky */
+  height: 100vh;
+  overflow: hidden;
 }
 

@@ -1,0 +1,39 @@
+.space {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+}
+
+.rocket-ship {
+  position: absolute;
+  width: 79px;
+  transition: transform 5s ease; /* Adjust time as needed */
+}
+/* Keyframes remain the same */
+
+.travelPath1 { animation: travelPath1 5s infinite; }
+.travelPath2 { animation: travelPath2 5s infinite; }
+.travelPath3 { animation: travelPath3 5s infinite; }
+.travelPath4 { animation: travelPath4 5s infinite; }
+
+/* Example keyframe */
+@keyframes travelPath1 {
+  from { transform: translate(10vw, 10vh) rotate(0deg); }
+  to { transform: translate(80vw, 80vh) rotate(360deg); }
+}
+@keyframes travelPath2 {
+  from { transform: translate(80vw, 10vh) rotate(0deg); }
+  to { transform: translate(10vw, 80vh) rotate(360deg); }
+}
+
+@keyframes travelPath3 {
+  from { transform: translate(10vw, 80vh) rotate(0deg); }
+  to { transform: translate(80vw, 10vh) rotate(360deg); }
+}
+
+@keyframes travelPath4 {
+  from { transform: translate(80vw, 80vh) rotate(0deg); }
+  to { transform: translate(10vw, 10vh) rotate(360deg); }
+}

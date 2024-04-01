@@ -1,29 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import './index.css';
-import ImageSlider from "../../global/components/imageSlider/imageSlider";
 import SideName from "../../global/components/sideName/sidename";
 import Person3D from "../../global/components/3D/person";
-import image_1 from "../../global/images/landingPage/image_1.JPG";
-import image_2 from "../../global/images/landingPage/image_2.jpg";
-import image_3 from "../../global/images/landingPage/image_3.JPG";
-import image_5 from "../../global/images/landingPage/image_5.jpg";
-export default function LandingPage() {
-    const images = [
-        image_1
-        , image_2
-        , image_3
-        , image_5
+import MathDisplay from "./math";
 
-    ];
+export default function LandingPage() {
+    const [showMath, setShowMath] = useState(false); // State to manage the display of MathDisplay
+
+    useEffect(() => {
+        // Set a timer to change showSlider state to true after 4 seconds
+        const timer = setTimeout(() => setShowMath(true), 20000); // 20000 milliseconds = 20 seconds
+
+        return () => clearTimeout(timer); // Cleanup the timer if the component unmounts
+    }, []); // Empty dependency array means this effect runs once on mount
+
     return (
         <div className="landing-container">
-            <div className="slider-container">
-                <ImageSlider images={images} />
-            </div>
-            <SideName />
             <div className="planet">
                 <Person3D />
             </div>
+            <SideName />
+            {/* Now the visibility is managed by React state */}
+            <div className="math-div" style={{display: showMath ? 'block' : 'none'}}>
+                <MathDisplay />
+            </div>
         </div>
     );
-    }
+}

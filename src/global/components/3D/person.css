@@ -1,9 +1,8 @@
 .person{
     position:absolute;
-        width: 60%;
+        width: 100%;
         margin: auto; /* Center the div if needed */
         height: 100vh; /* Example height - adjust as necessary */
-        left: 40%;
     top: 0px;
 }
 canvas{

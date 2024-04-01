@@ -1,0 +1,23 @@
+.about-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    top: 10vh;
+}
+.about-title{
+    font-weight: bold;
+    position: absolute;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.481);
+    font-size: 16px;
+}
+.cowboy-img{
+    width: 20%;
+}

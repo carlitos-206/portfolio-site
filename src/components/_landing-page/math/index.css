@@ -1,0 +1,12 @@
+.math-container{
+    background-color: white;
+    width: 500px;
+    font-size: 14px;
+    position: absolute;
+    left: 5px;
+    border: solid 1px #000000;
+    height: 50vh;
+    border-radius: 5px ;
+    padding: 10px;
+    top: 1vh;
+}
