@@ -22,10 +22,10 @@ const Person3D = () => {
   const windowWidth = window.innerWidth;
 
   if(windowWidth > 768){
-  
+    // eslint-disable-next-line
     const mountRef = useRef(null);
-
-  useEffect(() => {
+    // eslint-disable-next-line
+    useEffect(() => {
     const scene = new THREE.Scene();
     const width = mountRef.current.clientWidth;
     const height = mountRef.current.clientHeight;
@@ -118,8 +118,9 @@ const Person3D = () => {
   return <div className="person" ref={mountRef} />;
   }
   else{
+    // eslint-disable-next-line
     const mountRef = useRef(null);
-
+    // eslint-disable-next-line
     useEffect(() => {
       const scene = new THREE.Scene();
       const width = mountRef.current.clientWidth;
@@ -179,12 +180,14 @@ const Person3D = () => {
   
       return () => {
         window.removeEventListener('resize', onWindowResize);
+        // eslint-disable-next-line
         mountRef.current.removeChild(renderer.domElement);
       };
     }, []);
   
     return <div className="person" ref={mountRef} />;
   };
+
 };
 
 export default Person3D;
