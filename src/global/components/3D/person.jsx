@@ -58,7 +58,7 @@ const Person3D = () => {
 
     const moons = [];
     const maxOrbitRadius = 2.5; // Max orbit radius to keep moons within canvas
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 13; i++) {
       const moonGeometry = new THREE.SphereGeometry(0.05 + Math.random() * 0.1, 16, 16);
       const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
       const moon = new THREE.Mesh(moonGeometry, moonMaterial);
@@ -158,7 +158,7 @@ const Person3D = () => {
         moon.position.x = moonDistance * Math.cos(i * moonAngleStep);
         moon.position.z = moonDistance * Math.sin(i * moonAngleStep);
         scene.add(moon);
-        moons.push(moon);
+        moons.push({ mesh: moon, angle: i * moonAngleStep });
       }
   
       // Lighting
@@ -171,10 +171,14 @@ const Person3D = () => {
   
       const animate = () => {
         requestAnimationFrame(animate);
-        planet.rotation.y += 0.005; // Simplified to rotate only the planet
-        moons.forEach((moon, index) => {
-          moon.rotation.y += 0.005; // Rotate each moon
+        planet.rotation.y += 0.005; // Rotate the planet for some dynamic effect
+  
+        moons.forEach((moon) => {
+          moon.angle += 0.01; // Increase the angle to move the moon
+          moon.mesh.position.x = moonDistance * Math.cos(moon.angle); // Update the x position based on the new angle
+          moon.mesh.position.z = moonDistance * Math.sin(moon.angle); // Update the z position based on the new angle
         });
+  
         renderer.render(scene, camera);
       };
   
