@@ -21,7 +21,7 @@ import './person.css';
 const Person3D = () => {
   const windowWidth = window.innerWidth;
 
-  if(windowWidth > 768){
+  // if(windowWidth > 768){
     // eslint-disable-next-line
     const mountRef = useRef(null);
     // eslint-disable-next-line
@@ -116,98 +116,98 @@ const Person3D = () => {
     };
   }, []);
   return <div className="person" ref={mountRef} />;
-  }
-  else{
-    // eslint-disable-next-line
-    const mountRef = useRef(null);
-    // eslint-disable-next-line
-    useEffect(() => {
-      const scene = new THREE.Scene();
-      const width = mountRef.current.clientWidth;
-      const height = mountRef.current.clientHeight;
-      const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-      camera.position.z = 5;
+  // }
+  // else{
+  //   // eslint-disable-next-line
+  //   const mountRef = useRef(null);
+  //   // eslint-disable-next-line
+  //   useEffect(() => {
+  //     const scene = new THREE.Scene();
+  //     const width = mountRef.current.clientWidth;
+  //     const height = mountRef.current.clientHeight;
+  //     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  //     camera.position.z = 5;
   
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-      renderer.setSize(width, height);
-      renderer.setPixelRatio(window.devicePixelRatio); // Adjusts for high DPI devices like mobile
-      mountRef.current.appendChild(renderer.domElement);
+  //     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  //     renderer.setSize(width, height);
+  //     renderer.setPixelRatio(window.devicePixelRatio); // Adjusts for high DPI devices like mobile
+  //     mountRef.current.appendChild(renderer.domElement);
   
-      const controls = new OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true; // Optional: to have a smoother orbit
+  //     const controls = new OrbitControls(camera, renderer.domElement);
+  //     controls.enableDamping = true; // Optional: to have a smoother orbit
   
-      // Load the planet texture
-      const textureLoader = new THREE.TextureLoader();
-      const planetTexture = textureLoader.load(texture);
+  //     // Load the planet texture
+  //     const textureLoader = new THREE.TextureLoader();
+  //     const planetTexture = textureLoader.load(texture);
   
-      // Planet setup with texture
-      const planetGeometry = new THREE.SphereGeometry(1, 32, 32);
-      const planetMaterial = new THREE.MeshPhongMaterial({ map: planetTexture });
-      const planet = new THREE.Mesh(planetGeometry, planetMaterial);
-      scene.add(planet);
+  //     // Planet setup with texture
+  //     const planetGeometry = new THREE.SphereGeometry(1, 32, 32);
+  //     const planetMaterial = new THREE.MeshPhongMaterial({ map: planetTexture });
+  //     const planet = new THREE.Mesh(planetGeometry, planetMaterial);
+  //     scene.add(planet);
   
-      // Moon setup: creating exactly 7 moons with random distances
-      const moonTextures = [
-        moon_text_1, moon_text_2, moon_text_3
-      ].map(texture => textureLoader.load(texture));
-      const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
-      const moons = [];
-      const moonAngleStep = Math.PI * 2 / 7; // Evenly spaced in angle
+  //     // Moon setup: creating exactly 7 moons with random distances
+  //     const moonTextures = [
+  //       moon_text_1, moon_text_2, moon_text_3
+  //     ].map(texture => textureLoader.load(texture));
+  //     const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
+  //     const moons = [];
+  //     const moonAngleStep = Math.PI * 2 / 7; // Evenly spaced in angle
       
-      for (let i = 0; i < 3; i++) {
-        const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
-        const moonDistance = 1.2 + Math.random() * 1.3; // Random distance between 1.2 and 2.5 units
-        const moon = new THREE.Mesh(moonGeometry, moonMaterial);
-        const angle = i * moonAngleStep;
-        moon.position.x = moonDistance * Math.cos(angle);
-        moon.position.z = moonDistance * Math.sin(angle);
-        scene.add(moon);
-        moons.push({ mesh: moon, angle: angle, distance: moonDistance });
-      }
+  //     for (let i = 0; i < 3; i++) {
+  //       const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
+  //       const moonDistance = 1.2 + Math.random() * 1.3; // Random distance between 1.2 and 2.5 units
+  //       const moon = new THREE.Mesh(moonGeometry, moonMaterial);
+  //       const angle = i * moonAngleStep;
+  //       moon.position.x = moonDistance * Math.cos(angle);
+  //       moon.position.z = moonDistance * Math.sin(angle);
+  //       scene.add(moon);
+  //       moons.push({ mesh: moon, angle: angle, distance: moonDistance });
+  //     }
   
-      // Lighting
-      const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
-      scene.add(ambientLight);
+  //     // Lighting
+  //     const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
+  //     scene.add(ambientLight);
   
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-      directionalLight.position.set(5, 3, 5);
-      scene.add(directionalLight);
+  //     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  //     directionalLight.position.set(5, 3, 5);
+  //     scene.add(directionalLight);
   
-      const animate = () => {
-        requestAnimationFrame(animate);
-        planet.rotation.y += 0.005; // Rotate the planet for some dynamic effect
+  //     const animate = () => {
+  //       requestAnimationFrame(animate);
+  //       planet.rotation.y += 0.005; // Rotate the planet for some dynamic effect
   
-        moons.forEach((moon) => {
-          moon.angle += 0.01; // Increase the angle to move the moon
-          moon.mesh.position.x = moon.distance * Math.cos(moon.angle); // Update the x position based on the new angle
-          moon.mesh.position.z = moon.distance * Math.sin(moon.angle); // Update the z position based on the new angle
-        });
+  //       moons.forEach((moon) => {
+  //         moon.angle += 0.01; // Increase the angle to move the moon
+  //         moon.mesh.position.x = moon.distance * Math.cos(moon.angle); // Update the x position based on the new angle
+  //         moon.mesh.position.z = moon.distance * Math.sin(moon.angle); // Update the z position based on the new angle
+  //       });
   
-        renderer.render(scene, camera);
-      };
+  //       renderer.render(scene, camera);
+  //     };
   
-      animate();
+  //     animate();
   
-      // Handle window resize
-      const onWindowResize = () => {
-        camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
-      };
+  //     // Handle window resize
+  //     const onWindowResize = () => {
+  //       camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+  //       camera.updateProjectionMatrix();
+  //       renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+  //     };
   
-      window.addEventListener('resize', onWindowResize);
+  //     window.addEventListener('resize', onWindowResize);
   
-      return () => {
-        window.removeEventListener('resize', onWindowResize);
-        if (mountRef.current) {
-          // eslint-disable-next-line
-          mountRef.current.removeChild(renderer.domElement);
-        }
-      };
-    }, []);
+  //     return () => {
+  //       window.removeEventListener('resize', onWindowResize);
+  //       if (mountRef.current) {
+  //         // eslint-disable-next-line
+  //         mountRef.current.removeChild(renderer.domElement);
+  //       }
+  //     };
+  //   }, []);
   
-    return <div className="person" ref={mountRef} />;
-  };
+  //   return <div className="person" ref={mountRef} />;
+  // };
 
 };
 
