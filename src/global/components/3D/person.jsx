@@ -19,7 +19,11 @@ import moon_text_13 from '../../images/textures/moon_text_13.jpg';
 import './person.css';
 
 const Person3D = () => {
-  const mountRef = useRef(null);
+  const windowWidth = window.innerWidth;
+
+  if(windowWidth > 768){
+  
+    const mountRef = useRef(null);
 
   useEffect(() => {
     const scene = new THREE.Scene();
@@ -112,6 +116,75 @@ const Person3D = () => {
     };
   }, []);
   return <div className="person" ref={mountRef} />;
+  }
+  else{
+    const mountRef = useRef(null);
+
+    useEffect(() => {
+      const scene = new THREE.Scene();
+      const width = mountRef.current.clientWidth;
+      const height = mountRef.current.clientHeight;
+      const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+      camera.position.z = 5;
+  
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(window.devicePixelRatio); // Adjusts for high DPI devices like mobile
+      mountRef.current.appendChild(renderer.domElement);
+  
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true; // Optional: to have a smoother orbit
+  
+      // Load the planet texture (Consider reducing texture size for mobile)
+      const textureLoader = new THREE.TextureLoader();
+      const planetTexture = textureLoader.load(texture);
+  
+      // Planet setup with texture
+      const planetGeometry = new THREE.SphereGeometry(1, 32, 32);
+      const planetMaterial = new THREE.MeshPhongMaterial({ map: planetTexture });
+      const planet = new THREE.Mesh(planetGeometry, planetMaterial);
+      scene.add(planet);
+  
+      // Simplifying moon setup to reduce load
+      const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
+      const moonMaterial = new THREE.MeshPhongMaterial({ color: 0x888888 }); // Using a simple color instead of texture
+      const moon = new THREE.Mesh(moonGeometry, moonMaterial);
+      moon.position.set(1.5, 0, 1.5); // Fixed position to avoid random calculations
+      scene.add(moon);
+  
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
+      scene.add(ambientLight);
+  
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+      directionalLight.position.set(5, 3, 5);
+      scene.add(directionalLight);
+  
+      const animate = () => {
+        requestAnimationFrame(animate);
+        planet.rotation.y += 0.005; // Simplified to rotate only the planet
+        renderer.render(scene, camera);
+      };
+  
+      animate();
+  
+      // Handle window resize
+      const onWindowResize = () => {
+        camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+      };
+  
+      window.addEventListener('resize', onWindowResize);
+  
+      return () => {
+        window.removeEventListener('resize', onWindowResize);
+        mountRef.current.removeChild(renderer.domElement);
+      };
+    }, []);
+  
+    return <div className="person" ref={mountRef} />;
+  };
 };
 
 export default Person3D;
