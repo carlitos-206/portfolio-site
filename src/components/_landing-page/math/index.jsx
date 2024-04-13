@@ -1,5 +1,5 @@
 import React from 'react';
-import { InlineMath, BlockMath, MathDisplay } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import "./index.css";
 const MathFunctionJSX = () => {
