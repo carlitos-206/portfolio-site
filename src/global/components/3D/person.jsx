@@ -54,7 +54,7 @@ const Person3D = () => {
 
     const moons = [];
     const maxOrbitRadius = 2.5; // Max orbit radius to keep moons within canvas
-    for (let i = 0; i < 13; i++) {
+    for (let i = 0; i < 7; i++) {
       const moonGeometry = new THREE.SphereGeometry(0.05 + Math.random() * 0.1, 16, 16);
       const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
       const moon = new THREE.Mesh(moonGeometry, moonMaterial);

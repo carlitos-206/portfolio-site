@@ -8,21 +8,36 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
 function App() {
+
   const [isLoading, setIsLoading] = useState(true);
-  const [screenInfo, setScreenInfo] = useState({ width: window.innerWidth, height: window.innerHeight });
+  const [screenInfo, setScreenInfo] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 5500);
-    return () => clearTimeout(timer);
-  }, []);
+  const Home = () =>{ 
+  
+    useEffect(() => {
+      // Handle resize
+      const handleResize = () => {
+        setScreenInfo({ width: window.innerWidth, height: window.innerHeight });
+      };
+  
+      // Set up event listener for resize
+      window.addEventListener('resize', handleResize);
+  
+      // Set up timer to stop loading
+      const timer = setTimeout(() => setIsLoading(false), 5500);
+  
+      // Cleanup function
+      return () => {
+        window.removeEventListener('resize', handleResize);
+        clearTimeout(timer);
+      };
+    }, []); 
+    
+    return(
 
-  useEffect(() => {
-    const handleResize = () => setScreenInfo({ width: window.innerWidth, height: window.innerHeight });
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const Home = () => (
     <div className="home">
       {isLoading && (
         <div style={{
@@ -45,7 +60,7 @@ function App() {
       <LandingPage />
       <NavBar />
     </div>
-  );
+  );}
   
   const About = () => (
     <div className="about">
@@ -57,8 +72,8 @@ function App() {
 
   const Projects = () => (
     <div className="projects">
-      <Stars screenInfo={screenInfo} />
       <ProjectsPage />
+      <Stars screenInfo={screenInfo} />
       <NavBar />
     </div>
   );
