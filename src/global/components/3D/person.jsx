@@ -147,8 +147,12 @@ const Person3D = () => {
       scene.add(planet);
   
       // Moon setup: creating exactly 7 moons with random distances
+      const moonTextures = [
+        moon_text_1, moon_text_2, moon_text_3, moon_text_4, moon_text_5,
+        moon_text_6, moon_text_7
+      ]
       const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
-      const moonMaterial = new THREE.MeshPhongMaterial({ color: 0x888888 }); // Using a simple color instead of texture
+      const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
       const moons = [];
       const moonAngleStep = Math.PI * 2 / 7; // Evenly spaced in angle
   
