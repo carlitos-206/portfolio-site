@@ -148,14 +148,13 @@ const Person3D = () => {
   
       // Moon setup: creating exactly 7 moons with random distances
       const moonTextures = [
-        moon_text_1, moon_text_2, moon_text_3, moon_text_4, moon_text_5,
-        moon_text_6, moon_text_7
+        moon_text_1, moon_text_2
       ].map(texture => textureLoader.load(texture));
       const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
       const moons = [];
       const moonAngleStep = Math.PI * 2 / 7; // Evenly spaced in angle
       
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 2; i++) {
         const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
         const moonDistance = 1.2 + Math.random() * 1.3; // Random distance between 1.2 and 2.5 units
         const moon = new THREE.Mesh(moonGeometry, moonMaterial);
