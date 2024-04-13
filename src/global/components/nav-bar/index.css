@@ -13,3 +13,18 @@
 .nav-item:hover{
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px){
+    .navbar-container{
+        background-color: #00080b;
+        width: 80%;
+        left: 10%;
+        border-radius: 100px;
+        height: min-content;
+        bottom: 20px;
+    }
+    .nav-item:hover{
+        cursor: pointer;
+    }
+    
+}
