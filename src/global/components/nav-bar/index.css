@@ -21,7 +21,7 @@
         left: 10%;
         border-radius: 100px;
         height: min-content;
-        bottom: 20px;
+        bottom: 5px;
     }
     .nav-item:hover{
         cursor: pointer;
