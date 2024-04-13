@@ -19,7 +19,7 @@ import moon_text_13 from '../../images/textures/moon_text_13.jpg';
 import './person.css';
 
 const Person3D = () => {
-  const windowWidth = window.innerWidth;
+  // const windowWidth = window.innerWidth;
 
   // if(windowWidth > 768){
     // eslint-disable-next-line
