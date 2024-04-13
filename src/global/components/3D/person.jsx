@@ -146,12 +146,20 @@ const Person3D = () => {
       const planet = new THREE.Mesh(planetGeometry, planetMaterial);
       scene.add(planet);
   
-      // Simplifying moon setup to reduce load
+      // Moon setup: creating exactly 7 moons
       const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
       const moonMaterial = new THREE.MeshPhongMaterial({ color: 0x888888 }); // Using a simple color instead of texture
-      const moon = new THREE.Mesh(moonGeometry, moonMaterial);
-      moon.position.set(1.5, 0, 1.5); // Fixed position to avoid random calculations
-      scene.add(moon);
+      const moons = [];
+      const moonDistance = 1.5; // All moons at the same distance for simplicity
+      const moonAngleStep = Math.PI * 2 / 7; // Evenly spaced
+  
+      for (let i = 0; i < 7; i++) {
+        const moon = new THREE.Mesh(moonGeometry, moonMaterial);
+        moon.position.x = moonDistance * Math.cos(i * moonAngleStep);
+        moon.position.z = moonDistance * Math.sin(i * moonAngleStep);
+        scene.add(moon);
+        moons.push(moon);
+      }
   
       // Lighting
       const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
@@ -164,6 +172,9 @@ const Person3D = () => {
       const animate = () => {
         requestAnimationFrame(animate);
         planet.rotation.y += 0.005; // Simplified to rotate only the planet
+        moons.forEach((moon, index) => {
+          moon.rotation.y += 0.005; // Rotate each moon
+        });
         renderer.render(scene, camera);
       };
   
