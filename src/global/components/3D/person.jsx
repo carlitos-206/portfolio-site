@@ -150,7 +150,8 @@ const Person3D = () => {
       const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
       const moonMaterial = new THREE.MeshPhongMaterial({ color: 0x888888 }); // Using a simple color instead of texture
       const moons = [];
-      const moonDistance = 1.5; // All moons at the same distance for simplicity
+
+      const moonDistance = (Math.random() * 1.5); // All moons at the same distance for simplicity
       const moonAngleStep = Math.PI * 2 / 7; // Evenly spaced
   
       for (let i = 0; i < 7; i++) {
