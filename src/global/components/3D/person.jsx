@@ -152,11 +152,11 @@ const Person3D = () => {
         moon_text_6, moon_text_7
       ].map(texture => textureLoader.load(texture));
       const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
-      const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
       const moons = [];
       const moonAngleStep = Math.PI * 2 / 7; // Evenly spaced in angle
-  
+      
       for (let i = 0; i < 7; i++) {
+        const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
         const moonDistance = 1.2 + Math.random() * 1.3; // Random distance between 1.2 and 2.5 units
         const moon = new THREE.Mesh(moonGeometry, moonMaterial);
         const angle = i * moonAngleStep;
