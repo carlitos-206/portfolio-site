@@ -147,11 +147,11 @@ const Person3D = () => {
       scene.add(planet);
   
       // Simplifying moon setup to reduce load
-      // const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
-      // const moonMaterial = new THREE.MeshPhongMaterial({ color: 0x888888 }); // Using a simple color instead of texture
-      // const moon = new THREE.Mesh(moonGeometry, moonMaterial);
-      // moon.position.set(1.5, 0, 1.5); // Fixed position to avoid random calculations
-      // scene.add(moon);
+      const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
+      const moonMaterial = new THREE.MeshPhongMaterial({ color: 0x888888 }); // Using a simple color instead of texture
+      const moon = new THREE.Mesh(moonGeometry, moonMaterial);
+      moon.position.set(1.5, 0, 1.5); // Fixed position to avoid random calculations
+      scene.add(moon);
   
       // Lighting
       const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
