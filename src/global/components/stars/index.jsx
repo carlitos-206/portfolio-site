@@ -24,7 +24,7 @@ export default function Stars({screenInfo}){
   if(screenInfo.width>=360 && screenInfo.width<390){
     let heightAdjustment = (screenInfo.width - 360)*3
     console.log(heightAdjustment)
-    for(let i = 0; i < 10000; i++){
+    for(let i = 0; i < 1000; i++){
       let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
         width: `${random(0,15)}px`,
         position: 'relative',
@@ -39,7 +39,7 @@ export default function Stars({screenInfo}){
   else if(screenInfo.width>=390 && screenInfo.width<412){
     let heightAdjustment = (screenInfo.width - 360)*3
     console.log(heightAdjustment)
-    for(let i = 0; i < 10000; i++){
+    for(let i = 0; i < 1000; i++){
       let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
         width: `${random(0,15)}px`,
         position: 'relative',
@@ -54,7 +54,7 @@ export default function Stars({screenInfo}){
   else if(screenInfo.width>=412 && screenInfo.width<540){
     let heightAdjustment = (screenInfo.width - 360)*3
     console.log(heightAdjustment)
-    for(let i = 0; i < 10000; i++){
+    for(let i = 0; i < 1000; i++){
       let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
         width: `${random(0,15)}px`,
         position: 'relative',
@@ -69,7 +69,7 @@ export default function Stars({screenInfo}){
     else if(screenInfo.width === 540){
       let heightAdjustment = (screenInfo.width - 540)
       console.log(heightAdjustment)
-      for(let i = 0; i < 10000; i++){
+      for(let i = 0; i < 1000; i++){
         let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
           width: `${random(0,15)}px`,
           position: 'relative',
@@ -84,7 +84,7 @@ export default function Stars({screenInfo}){
   else if(screenInfo.width>540 && screenInfo.width<=768){
     let heightAdjustment = (screenInfo.width - 540)
     console.log(heightAdjustment)
-    for(let i = 0; i < 10000; i++){
+    for(let i = 0; i < 1000; i++){
       let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
         width: `${random(0,15)}px`,
         position: 'relative',
@@ -99,7 +99,7 @@ export default function Stars({screenInfo}){
   else if(screenInfo.width>=768 && screenInfo.width<=1024){
     let heightAdjustment = (screenInfo.width - 768)*3
     console.log(heightAdjustment)
-    for(let i = 0; i < 10000; i++){
+    for(let i = 0; i < 1000; i++){
       let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
         width: `${random(0,15)}px`,
         position: 'relative',
