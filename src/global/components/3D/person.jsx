@@ -136,7 +136,7 @@ const Person3D = () => {
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true; // Optional: to have a smoother orbit
   
-      // Load the planet texture (Consider reducing texture size for mobile)
+      // Load the planet texture
       const textureLoader = new THREE.TextureLoader();
       const planetTexture = textureLoader.load(texture);
   
@@ -146,20 +146,20 @@ const Person3D = () => {
       const planet = new THREE.Mesh(planetGeometry, planetMaterial);
       scene.add(planet);
   
-      // Moon setup: creating exactly 7 moons
+      // Moon setup: creating exactly 7 moons with random distances
       const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
       const moonMaterial = new THREE.MeshPhongMaterial({ color: 0x888888 }); // Using a simple color instead of texture
       const moons = [];
-
-      const moonDistance = (Math.random() * 1.5); // All moons at the same distance for simplicity
-      const moonAngleStep = Math.PI * 2 / 7; // Evenly spaced
+      const moonAngleStep = Math.PI * 2 / 7; // Evenly spaced in angle
   
       for (let i = 0; i < 7; i++) {
+        const moonDistance = 1.2 + Math.random() * 1.3; // Random distance between 1.2 and 2.5 units
         const moon = new THREE.Mesh(moonGeometry, moonMaterial);
-        moon.position.x = moonDistance * Math.cos(i * moonAngleStep);
-        moon.position.z = moonDistance * Math.sin(i * moonAngleStep);
+        const angle = i * moonAngleStep;
+        moon.position.x = moonDistance * Math.cos(angle);
+        moon.position.z = moonDistance * Math.sin(angle);
         scene.add(moon);
-        moons.push({ mesh: moon, angle: i * moonAngleStep });
+        moons.push({ mesh: moon, angle: angle, distance: moonDistance });
       }
   
       // Lighting
@@ -176,8 +176,8 @@ const Person3D = () => {
   
         moons.forEach((moon) => {
           moon.angle += 0.01; // Increase the angle to move the moon
-          moon.mesh.position.x = moonDistance * Math.cos(moon.angle); // Update the x position based on the new angle
-          moon.mesh.position.z = moonDistance * Math.sin(moon.angle); // Update the z position based on the new angle
+          moon.mesh.position.x = moon.distance * Math.cos(moon.angle); // Update the x position based on the new angle
+          moon.mesh.position.z = moon.distance * Math.sin(moon.angle); // Update the z position based on the new angle
         });
   
         renderer.render(scene, camera);
