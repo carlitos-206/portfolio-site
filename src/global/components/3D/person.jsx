@@ -150,20 +150,19 @@ const Person3D = () => {
       const moonTextures = [
         moon_text_1, moon_text_2, moon_text_3
       ].map(texture => textureLoader.load(texture));
+      const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
       const moons = [];
-      const maxOrbitRadius = 2.5; // Max orbit radius to keep moons within canvas
-
+      const moonAngleStep = Math.PI * 2 / 7; // Evenly spaced in angle
+      
       for (let i = 0; i < 3; i++) {
-        const moonGeometry = new THREE.SphereGeometry(0.05 + Math.random() * 0.1, 16, 16);
-      const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
-      const moon = new THREE.Mesh(moonGeometry, moonMaterial);
-      // Constrain the moon's orbit to ensure it stays within the canvas
-      const distance = 2.5 + Math.random() * maxOrbitRadius;
-      const angle = Math.random() * Math.PI * 2;
-      moon.position.x = distance * Math.cos(angle);
-      moon.position.z = distance * Math.sin(angle);
-      scene.add(moon);
-      moons.push(moon);
+        const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
+        const moonDistance = 1.2 + Math.random() * 1.3; // Random distance between 1.2 and 2.5 units
+        const moon = new THREE.Mesh(moonGeometry, moonMaterial);
+        const angle = i * moonAngleStep;
+        moon.position.x = moonDistance * Math.cos(angle);
+        moon.position.z = moonDistance * Math.sin(angle);
+        scene.add(moon);
+        moons.push({ mesh: moon, angle: angle, distance: moonDistance });
       }
   
       // Lighting
