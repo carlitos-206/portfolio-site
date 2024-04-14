@@ -151,7 +151,8 @@ const Person3D = () => {
         moon_text_1, moon_text_2, moon_text_3
       ].map(texture => textureLoader.load(texture));
       const moons = [];
-      
+      const maxOrbitRadius = 2.5; // Max orbit radius to keep moons within canvas
+
       for (let i = 0; i < 3; i++) {
         const moonGeometry = new THREE.SphereGeometry(0.05 + Math.random() * 0.1, 16, 16);
       const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
