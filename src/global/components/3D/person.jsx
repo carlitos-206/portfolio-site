@@ -148,7 +148,7 @@ const Person3D = () => {
   
       // Moon setup: creating exactly 7 moons with random distances
       const moonTextures = [
-        moon_text_1, moon_text_2, moon_text_3
+        moon_text_9, moon_text_7, moon_text_11
       ].map(texture => textureLoader.load(texture));
       const moonGeometry = new THREE.SphereGeometry(0.1, 16, 16);
       const moons = [];
