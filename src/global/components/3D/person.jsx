@@ -154,7 +154,7 @@ const Person3D = () => {
       const moons = [];
       const moonAngleStep = Math.PI * 2 / 7; // Evenly spaced in angle
       
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 1; i++) {
         const moonMaterial = new THREE.MeshPhongMaterial({ map: moonTextures[i] });
         const moonDistance = 1.2 + Math.random() * 1.3; // Random distance between 1.2 and 2.5 units
         const moon = new THREE.Mesh(moonGeometry, moonMaterial);
