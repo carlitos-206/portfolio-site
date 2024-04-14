@@ -8,8 +8,6 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
 function App() {
-
-  const [isLoading, setIsLoading] = useState(true);
   const [screenInfo, setScreenInfo] = useState({
     width: window.innerWidth,
     height: window.innerHeight
@@ -27,35 +25,16 @@ function App() {
       window.addEventListener('resize', handleResize);
   
       // Set up timer to stop loading
-      const timer = setTimeout(() => setIsLoading(false), 5500);
   
       // Cleanup function
       return () => {
         window.removeEventListener('resize', handleResize);
-        clearTimeout(timer);
       };
     }, []); 
     
     return(
 
     <div className="home">
-      {isLoading && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 6,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: 'white',
-        }}>
-          Loading...
-        </div>
-      )}
       <Stars screenInfo={screenInfo} />
       <LandingPage />
       <NavBar />

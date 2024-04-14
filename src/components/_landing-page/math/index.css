@@ -1,12 +1,33 @@
 .math-container{
     background-color: white;
-    width: 500px;
+    width: 25%;
     font-size: 14px;
     position: absolute;
     left: 5px;
     border: solid 1px #000000;
-    height: max-content;
+    min-height: min-content;
+    max-height: 90vh;
     border-radius: 5px ;
     padding: 10px;
-    top: 1vh;
+    top: 5vh;    
+}
+
+@media screen and (max-width: 1439px) {
+    .math-container{
+        width: 50%;
+        position: absolute;
+        left: 0;
+    }
+    
+}
+
+@media screen and (max-width: 425px) {
+    .math-container{
+        position: absolute;
+        width: 100%;
+        overflow-y: scroll;
+        z-index: 6;
+    }
+    
+    
 }

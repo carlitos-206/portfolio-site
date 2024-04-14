@@ -1,152 +1,40 @@
 import React from "react";
 import starImg from "../../images/landingPage/blackStar.png";
 
-// this function hold the stars background of the site. 
-// it has been modified for various screen sizes
-// concept is simple:
-//    Check for screen width
-//    randomly place a star img in the screen with given params
-//    star width is randomly given also
-//    on refresh a new deployment is done
-// meaning you might never see the same pattern again making each pattern brand new everytime
-export default function Stars({screenInfo}){
-  console.log(`
-    W: ${screenInfo.width}
-    H: ${screenInfo.height}
+// This function holds the stars background of the site and adjusts for various screen sizes.
+// Stars are randomly placed on the screen with random sizes, and the layout refreshes with each load.
+export default function Stars({ screenInfo }) {
+  console.log(`Screen Dimensions - Width: ${screenInfo.width}, Height: ${screenInfo.height}`);
 
-  `)
-  let array = []
-  // function to give random output
+  const starsArray = [];
+  const numStars = 1000;  // Number of stars to generate
+  const maxHeight = screenInfo.height;  // Dynamic height based on screen info
+
+  // Function to generate a random number between min and max
   function random(min, max) {
-    return min + Math.random() * (max + 1 - min);
+    return Math.floor(min + Math.random() * (max - min + 1));
   }
-  // Small mobile devices
-  if(screenInfo.width>=360 && screenInfo.width<390){
-    let heightAdjustment = (screenInfo.width - 360)*3
-    console.log(heightAdjustment)
-    for(let i = 0; i < 1000; i++){
-      let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
-        width: `${random(0,15)}px`,
-        position: 'relative',
-        top: `${random(0, 100)}px`,
-        zIndex: '-4'
-      }
-      } />
-      array.push(item)
-    }
+
+  // Generate star elements with random positions and sizes
+  for (let i = 0; i < numStars; i++) {
+    const starStyle = {
+      width: `${random(1, 15)}px`,  // Star width between 1px and 15px
+      position: 'absolute',
+      top: `${random(0, maxHeight)}px`,  // Star top position within the dynamic height
+      left: `${random(0, screenInfo.width)}px`,  // Star left position within the screen width
+      zIndex: '-1'  // Ensure stars are in the background
+    };
+
+    const starElement = (
+      <img src={starImg} key={i} alt="*" className="stars" style={starStyle} />
+    );
+
+    starsArray.push(starElement);
   }
-  // Medium Mobile Screens
-  else if(screenInfo.width>=390 && screenInfo.width<412){
-    let heightAdjustment = (screenInfo.width - 360)*3
-    console.log(heightAdjustment)
-    for(let i = 0; i < 1000; i++){
-      let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
-        width: `${random(0,15)}px`,
-        position: 'relative',
-        top: `${random(0, 310)}px`,
-        zIndex: '-4'
-      }
-      } />
-      array.push(item)
-    }
-  }
-  // Large Mobile Screens 
-  else if(screenInfo.width>=412 && screenInfo.width<540){
-    let heightAdjustment = (screenInfo.width - 360)*3
-    console.log(heightAdjustment)
-    for(let i = 0; i < 1000; i++){
-      let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
-        width: `${random(0,15)}px`,
-        position: 'relative',
-        top: `${random(0, 520)}px`,
-        zIndex: '-4'
-      }
-      } />
-      array.push(item)
-    }
-  }
-     // EDGECASE --- SURFACE DUO TABLET
-    else if(screenInfo.width === 540){
-      let heightAdjustment = (screenInfo.width - 540)
-      console.log(heightAdjustment)
-      for(let i = 0; i < 1000; i++){
-        let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
-          width: `${random(0,15)}px`,
-          position: 'relative',
-          top: `${random(0, 800)}px`,
-          zIndex: '-4'
-        }
-        } />
-        array.push(item)
-      }
-    } 
-   // This is for med tablets
-  else if(screenInfo.width>540 && screenInfo.width<=768){
-    let heightAdjustment = (screenInfo.width - 540)
-    console.log(heightAdjustment)
-    for(let i = 0; i < 1000; i++){
-      let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
-        width: `${random(0,15)}px`,
-        position: 'relative',
-        top: `${random(0, 2050+heightAdjustment)}px`,
-        zIndex: '-4'
-      }
-      } />
-      array.push(item)
-    }
-  } 
-   // This is for large tablets
-  else if(screenInfo.width>=768 && screenInfo.width<=1024){
-    let heightAdjustment = (screenInfo.width - 768)*3
-    console.log(heightAdjustment)
-    for(let i = 0; i < 1000; i++){
-      let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
-        width: `${random(0,15)}px`,
-        position: 'relative',
-        top: `${random(0, 2250+heightAdjustment)}px`,
-        zIndex: '-4'
-      }
-      } />
-      array.push(item)
-    }
-  } 
-   // This is for med monitors
-  else if(screenInfo.width>=1025 && screenInfo.width<=1536){
-    let heightAdjustment = (screenInfo.width - 1025)
-    if(screenInfo.width === 1536){
-      heightAdjustment = 1200
-    }
-    for(let i = 0; i < 1000; i++){
-      let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
-        width: `${random(0,15)}px`,
-        position: 'relative',
-        top: `${random(0, 350+heightAdjustment)}px`,
-        zIndex: '-4'
-      }
-      } />
-      array.push(item)
-    }
-  } 
-    // This is for larger monitors
-  else if(screenInfo.width>=1537){
-    let heightAdjustment = (screenInfo.width - 1537)*1.5
-    if(screenInfo.width === 1920){
-      heightAdjustment = 200
-    }
-    for(let i = 0; i < 1000; i++){
-      let item = <img src={starImg} key={i} alt='*' className='stars' id={`star_${i}`} style={{
-        width: `${random(0,15)}px`,
-        position: 'relative',
-        top: `${random(0, 600+heightAdjustment)}px`,
-        zIndex: '-4'
-      }
-      } />
-      array.push(item)
-    }
-  }
-  return(
-    <div className="starContainer" style={{zIndex:'0'}}>
-      {array.map(item => item)}
+
+  return (
+    <div className="starContainer" style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden', zIndex: '0' }}>
+      {starsArray}
     </div>
-  )
+  );
 }

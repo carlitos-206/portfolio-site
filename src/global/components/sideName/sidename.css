@@ -2,22 +2,43 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: min-content;
     color: #007FFF; /* Electric Blue */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Black shadow for depth */    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Black shadow for depth */
+    font-size: 1.5rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
-    top: 450px;
     right: 25px;
     font-family: 'Roboto', sans-serif;
+    
+}
+
+#i-name {
+    position: relative;
+    left: 7px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .side-name-container {
+        right: 0; /* Adjust position to be more mobile-friendly */
+        font-size: 1.2rem; /* Smaller font size for smaller screens */
+        /* padding: 0 20px; Add padding to ensure content doesn't touch the edges */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Lighter shadow on smaller screens */
+    }
 
 }
-#i-name{
-    position: relative;
-    left: 8px;
+
+@media (max-width: 480px) {
+    .side-name-container {
+        font-size: 1rem; /* Even smaller font size for very small screens */
+        height: auto; /* Adjust height for landscape orientations or very small devices */
+        padding-top: 10px; /* Extra padding on top for better spacing */
+        padding-bottom: 10px; /* Extra padding on bottom for better spacing */
+    }
 }

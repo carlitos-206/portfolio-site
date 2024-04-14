@@ -1,21 +1,43 @@
-.navbar-container{
+.navbar-container {
     position: absolute;
-    bottom: 0px;
-    width: 100%;
+    bottom: 0;
+    width: 50%;
+    left: 25%;
     display: flex;
     justify-content: space-evenly;
-    background-color: #f8f9fa9d;
+    background-color: #000000;
     color: #007FFF; /* Electric Blue */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.352); /* Black shadow for depth */    
-    font-size: 1rem;
-
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.352); /* Black shadow for depth */
+    font-size: 14px;
+    align-items: center; /* Align items vertically in the center */
+    border-radius: 100px;
+    bottom: 5px;
 }
-.nav-item:hover{
+
+.nav-item {
+    display: flex; /* Use flexbox to align text and icons */
+    align-items: center; /* Center alignment of content within nav-item */
     cursor: pointer;
+
 }
 
-@media screen and (max-width: 768px){
-    .navbar-container{
+.nav-content {
+    display: flex;
+    align-items: center; /* Ensures label and icon are aligned on the same line */
+    justify-content: center;
+    line-height: normal;
+}
+
+.nav-label {
+    margin-right: 10px; /* Space between label and icon */
+}
+
+.nav-icon {
+    /* font-size: 1.5rem; Adjust icon size if necessary */
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-container {
         background-color: #00080b;
         width: 80%;
         left: 10%;
@@ -23,8 +45,4 @@
         height: min-content;
         bottom: 5px;
     }
-    .nav-item:hover{
-        cursor: pointer;
-    }
-    
 }
