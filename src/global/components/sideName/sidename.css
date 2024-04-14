@@ -11,7 +11,6 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
     right: 25px;
     font-family: 'Roboto', sans-serif;
@@ -20,7 +19,7 @@
 
 #i-name {
     position: relative;
-    left: 7px;
+    left: 6px;
 }
 
 /* Responsive adjustments */
@@ -29,7 +28,6 @@
         right: 0; /* Adjust position to be more mobile-friendly */
         font-size: 1.2rem; /* Smaller font size for smaller screens */
         /* padding: 0 20px; Add padding to ensure content doesn't touch the edges */
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Lighter shadow on smaller screens */
     }
 
 }

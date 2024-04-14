@@ -51,8 +51,8 @@ function App() {
 
   const Projects = () => (
     <div className="projects">
-      <ProjectsPage />
       <Stars screenInfo={screenInfo} />
+      <ProjectsPage />
       <NavBar />
     </div>
   );
