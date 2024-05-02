@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.css"
-import ChatContainer from "../../global/components/OpenAi_chat";
+import CustomGPT from "../../global/components/OpenAi_chat";
 import cowboy from "../../global/images/aboutPage/spaceCowboy.png"
 const AboutPage = () => {
     return (
@@ -11,7 +11,7 @@ const AboutPage = () => {
                 <h1>I trained ChatGPT to chat about me instead</h1>
             </div>
             <div className="about-body">
-                <ChatContainer />
+                <CustomGPT />
                 <img src={cowboy} alt="Carlitos" className="cowboy-img"/>
             </div>
 

@@ -4,6 +4,7 @@ import Stars from "./global/components/stars/index.jsx";
 import NavBar from "./global/components/nav-bar/index.jsx";
 import AboutPage from "./components/_about-page/index.jsx";
 import ProjectsPage from "./components/_projects-page/index.jsx";
+import ContactPage from "./components/_contact-page/index.jsx";
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -56,12 +57,21 @@ function App() {
       <NavBar />
     </div>
   );
+  const Contact = () => (
+    <div className="contact">
+      <Stars screenInfo={screenInfo} />
+      <ContactPage />
+      <NavBar />
+    </div>
+  );
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );

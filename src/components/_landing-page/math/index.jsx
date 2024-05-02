@@ -22,33 +22,42 @@ const MathFunctionJSX = () => {
         <p>
             here is the math behind the stars
         </p>
-        {/* <MathDisplay a={1664525} Xn={1} c={1013904223} m={2**32} /> */}
-        <InlineMath math={String.raw`
-            \\n = 999
-            \\w = ScreenWidth
-            \\h = ScreenHeight
-            \\m = 2^{32}
-            \\
-            \\f''(min,max) = \left\lfloor min + \left(\frac{X_i}{m}\right) \times (max - min + 1) \right\rfloor
-            `} />
+        <p>
+            <InlineMath math={String.raw`
+                \\n = 999
+                \\w = ScreenWidth
+                \\h = ScreenHeight
+                \\m = 2^{32}
+                \\
+                `} />
+        </p>
+
+        <p>
+            <InlineMath math={String.raw`
+                        \\f'''(min,max) = \left\lfloor min + \left(\frac{X_i}{m}\right) \times (max - min + 1) \right\rfloor
+
+                        `} />
+        </p>
         <br />
-        <InlineMath math={String.raw`
-            f''(star_i) = \begin{cases} 
-            width & :f''(1,15) \\
-            top & :f''(0,h) \\
-            left & :f''(0,w) \\
-            \end{cases}
-        `} />
+        <p>
+            <InlineMath math={String.raw`
+                f''(star_i) = \begin{cases} 
+                width & :f'''(1,15) \\
+                top & :f'''(0,h) \\
+                left & :f'''(0,w) \\
+                \end{cases}
+                `} />
+        </p>
         <br />
 
-        <InlineMath math={String.raw`
-            \\ f'(position)=\sum_{i=0}^{n}f''(star_i)
-        `} />
-        <p></p>
-        <br />
+        <p>
+            <InlineMath math={String.raw`
+                \\ f'(position)=\sum_{i=0}^{n}f''(star_i)
+                `} />
+        </p>
         <button onClick={(e)=>{
             document.getElementsByClassName('math-container')[0].setAttribute('style', "display:none")
-            }}>Close</button>
+        }}>Close</button>
     </div>
   );
 };

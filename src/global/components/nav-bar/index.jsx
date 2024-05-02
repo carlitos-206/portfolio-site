@@ -40,30 +40,34 @@ const NavBar = () => {
                 </h1>
             );
         }
-        return null;  // Don't render the icon for the current path
+        return null; // Do not render the icon for the current path
     };
-
-    return (
-        <div className="navbar-container">
-            {renderNavItem('/about', BsPersonVcardFill, 'About')}
-            {renderNavItem('/projects', GrWorkshop, 'Projects')}
-            {renderNavItem('/resume', ImProfile, 'Resume')}
-            {location.pathname !== '/' && (
-                <h1 className="nav-item" onClick={() => (window.location.href = '/')}>
-                    {windowWidth > 1439 ? (
-                        <div className="nav-content">
-                            <span className="nav-label">Home</span>
-                            <IoHome className="nav-icon" />
-                        </div>
-                    ) : (
-                        <IoHome />
-                    )}
-                </h1>
-            )}
-            {renderNavItem('/work', GiMeshNetwork, 'Work')}
-            {renderNavItem('/contact', MdOutlineConnectWithoutContact, 'Contact')}
-        </div>
-    );
+    let route = location.pathname;
+    if( route === '/about' || route === '/resume' || route === '/projects'){
+        return (
+            <div className="navbar-container">
+                {renderNavItem('/about', BsPersonVcardFill, 'About')}
+                {renderNavItem('/resume', ImProfile, 'Resume')}
+                {renderNavItem('/projects', GrWorkshop, 'Projects')}
+                {location.pathname !== '/' && renderNavItem('/', IoHome, 'Home')}
+                {renderNavItem('/work', GiMeshNetwork, 'Work')}
+                {renderNavItem('/contact', MdOutlineConnectWithoutContact, 'Contact')}
+                {/* {renderNavItem('/extras', MdOutlineConnectWithoutContact, 'Extra')} */}
+            </div>
+        );
+    }else{
+        return (
+            <div className="navbar-container">
+                {renderNavItem('/about', BsPersonVcardFill, 'About')}
+                {renderNavItem('/resume', ImProfile, 'Resume')}
+                {location.pathname !== '/' && renderNavItem('/', IoHome, 'Home')}
+                {renderNavItem('/projects', GrWorkshop, 'Projects')}
+                {renderNavItem('/work', GiMeshNetwork, 'Work')}
+                {renderNavItem('/contact', MdOutlineConnectWithoutContact, 'Contact')}
+                {/* {renderNavItem('/extras', MdOutlineConnectWithoutContact, 'Extra')} */}
+            </div>
+        );
+    }
 };
 
 export default NavBar;
